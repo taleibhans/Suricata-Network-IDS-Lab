@@ -9,11 +9,11 @@ Built an isolated two-VM network using VMware Fusion and Ubuntu Server 24.04 LTS
 
 ## Technologies
 
-- **Virtualization:** VMware Fusion
-- **Operating System:** Ubuntu Server 24.04 LTS
-- **Security:** Suricata IDS 7.0.3
-- **Network Scanning:** Nmap
-- **Protocols:** TCP/IP, ICMP
+- Virtualization: VMware Fusion
+- Operating System: Ubuntu Server 24.04 LTS
+- Security: Suricata IDS 7.0.3
+- Network Scanning: Nmap
+- Protocols: TCP/IP, ICMP
 
 ## Network Topology
 
@@ -22,7 +22,7 @@ Built an isolated two-VM network using VMware Fusion and Ubuntu Server 24.04 LTS
 | Ubuntu Server | 172.16.60.128 | IDS / Monitored Host |
 | Test Client | 172.16.60.129 | Traffic Generator |
 
-**Network:** `172.16.60.0/24` (Host-only)
+Network: `172.16.60.0/24` (Host-only)
 
 ## Detection Results
 
