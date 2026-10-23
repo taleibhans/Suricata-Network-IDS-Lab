@@ -34,7 +34,7 @@ Connectivity was tested from the client:
 ping -c 4 172.16.60.128
 ```
 
-**Result:** Four packets transmitted, four received, and 0% packet loss.
+Result: Four packets transmitted, four received, and 0% packet loss.
 
 ![Network connectivity and Nmap results](../screenshots/02-network-connectivity-nmap.png)
 
@@ -67,7 +67,7 @@ sudo systemctl restart suricata
 sudo systemctl status suricata
 ```
 
-**Result:** Suricata was `active (running)`.
+Result: Suricata was `active (running)`.
 
 ![Suricata configuration and service status](../screenshots/01-suricata-configuration.png)
 
@@ -121,7 +121,7 @@ On the test client:
 nmap -sT -Pn -p 1-1000 172.16.60.128
 ```
 
-**Nmap results:**
+Nmap results:
 
 - One host scanned and reachable
 - Port `22/tcp` open (SSH)
@@ -177,13 +177,13 @@ Following validation and a service restart, the subsequent scan produced one vis
 
 Several issues were encountered during implementation:
 
-**Virtual network connectivity:** The virtual machines required appropriate host-only networking and interface configuration to communicate. The test client also used a NAT interface for external connectivity.
+Virtual network connectivity: The virtual machines required appropriate host-only networking and interface configuration to communicate. The test client also used a NAT interface for external connectivity.
 
-**Duplicate rules files:** Two copies of `local.rules` existed under `/etc/suricata/rules/` and `/var/lib/suricata/rules/`. Editing the inactive copy caused configuration changes not to appear during validation. The active rules file was identified and the redundant copy removed.
+Duplicate rules files: Two copies of `local.rules` existed under `/etc/suricata/rules/` and `/var/lib/suricata/rules/`. Editing the inactive copy caused configuration changes not to appear during validation. The active rules file was identified and the redundant copy removed.
 
-**Rule syntax errors:** Suricata configuration validation identified invalid rule syntax, including the incorrect `flag` keyword. Correcting it to `flags` allowed the configuration to load successfully.
+Rule syntax errors: Suricata configuration validation identified invalid rule syntax, including the incorrect `flag` keyword. Correcting it to `flags` allowed the configuration to load successfully.
 
-**Historical alerts:** The `fast.log` file retained earlier alert messages after detection rules were changed. Fresh traffic and timestamps were used to verify the currently active signatures.
+Historical alerts: The `fast.log` file retained earlier alert messages after detection rules were changed. Fresh traffic and timestamps were used to verify the currently active signatures.
 
 ## 10. Results and Lessons Learned
 
